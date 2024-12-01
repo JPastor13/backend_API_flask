@@ -15,6 +15,26 @@ from app.config import environment
 app = Flask(__name__)
 app.config.from_object(environment)
 CORS(app, supports_credentials=True)#cors sea público
+#Configure Cloudinary
+cloudinary.config(
+cloud_name="dsuwaebrk",
+api_key="422682953915149",
+api_secret="QytDxda5S5vfPAj8BtTaadf-wm8"
+)
+@app.route('/upload',methods=['POST'])
+def upload_file():
+    if 'file' not in request.files:
+        return jsonify({'error':'No file part'})
+    file =request.files['file']
+    if file.filename=='':
+        return jsonify ({'error':'No selected file'})
+    try:
+        result=upload(file)
+        return jsonify({'url': result['secure_url']})
+    except Exception as e:
+        return jsonify({'error':str(e)})
+if __name__=='__main__':
+    app.run(debug=True)
 authorization = {
     'JPastor': {
         'type': 'apiKey',
