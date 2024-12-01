@@ -19,12 +19,17 @@ request_schema = StoreRequestSchema(store_ns)
 @store_ns.doc(security='JPastor')
 class StoressListCreate(Resource):
     #@jwt_required()
-    @store_ns.expect(request_schema.all())
+    #@store_ns.expect(request_schema.all())
+    #def get(self):
+     #   ''' Listar todas las tiendas '''
+      #  query_params = request_schema.all().parse_args()
+       # controller = StoreController()
+        #return controller.fetch_all(query_params)
+
     def get(self):
         ''' Listar todas las tiendas '''
-        query_params = request_schema.all().parse_args()
         controller = StoreController()
-        return controller.fetch_all(query_params)
+        return controller.fetch_all()
 
     #@jwt_required()
     @store_ns.expect(request_schema.create(), validate=True)

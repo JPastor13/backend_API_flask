@@ -9,7 +9,15 @@ class StoreController:
         self.db = db
         self.model = StoreModel
         self.schema = StoreResponseSchema
+    
+    def fetch_all(self):
+        records = self.model.where(status=True).all()
+        stores = self.schema(many=True)
+        return {
+            'records': stores.dump(records)
+        }, HTTPStatus.OK
 
+    '''
     def fetch_all(self, query_params):
         try:
             page = query_params['page']
@@ -34,7 +42,7 @@ class StoreController:
                 'message': 'Ocurrio un error',
                 'reason': str(e)
             }, HTTPStatus.INTERNAL_SERVER_ERROR
-
+    '''
     def save(self, body):
         try:
             record_new = self.model.create(**body)
