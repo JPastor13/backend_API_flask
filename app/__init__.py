@@ -31,7 +31,7 @@ api = Api(
     doc='/swagger-ui',
     authorizations=authorization
 )
-
+##sgsgsgsgd
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
