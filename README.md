@@ -23,7 +23,11 @@
 | name    | VARCHAR(30) | NOT NULL      |
 | status  | BOOLEAN     | DEFAULT(true) |
 
+
+
 - stores (tiendas)
+
+
 | columna      | tipo        | opciones      |
 | -------      | ----------- | ------------- |
 | id           | SERIAL      | PRIMARY KEY   |
@@ -43,6 +47,8 @@
 |status        | VARCHAR(255)| DEFAULT(true) !
 
 - events (eventos)
+
+
 | columna      | tipo        | opciones      |
 | -------      | ----------- | ------------- |
 | title        | VARCHAR     | PRIMARY KEY   |
@@ -51,6 +57,8 @@
 | hora         | VARCHAR(255)| DEFAULT(true) |
 
 - promotions (promociones)
+
+
 | columna      | tipo        | opciones      |
 | -------      | ----------- | ------------- |
 | store_id     | VARCHAR     | PRIMARY KEY   |

@@ -47,7 +47,7 @@ api = Api(
     app,
     title='API Plaza Santander',
     version='0.1',
-    description='RESTAPI de plaza santander en Flask por Richard Pastor',
+    description='RESTAPI de plaza santander en Flask',
     doc='/swagger-ui',
     authorizations=authorization
 )
