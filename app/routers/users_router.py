@@ -18,7 +18,7 @@ request_schema = UserRequestSchema(user_ns)
 @user_ns.route('')
 @user_ns.doc(security='JPastor')
 class UsersListCreate(Resource):
-    @jwt_required()
+    #@jwt_required()
     @user_ns.expect(request_schema.all())
     def get(self):
         ''' Listar todos los usuarios '''
