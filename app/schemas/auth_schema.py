@@ -15,7 +15,7 @@ class AuthRequestSchema:
     def refresh_token(self):
         parser = RequestParser()
         parser.add_argument('Authorization', type=str,
-                            location='headers', help='Ex: Bearer {token}')
+                            location='headers', help='Ex: JPastor {token}')
         return parser
 
     def password_reset(self):
