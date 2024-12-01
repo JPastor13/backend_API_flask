@@ -34,3 +34,6 @@ SQLAlchemy==2.0.35
 sqlalchemy-mixins==2.0.5
 typing_extensions==4.12.2
 Werkzeug==3.0.4
+Flask-Cors==5.0.0 
+cloudinary==1.41.0 
+pillow==11.0.0
