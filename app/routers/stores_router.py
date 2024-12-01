@@ -37,20 +37,20 @@ class StoressListCreate(Resource):
 @store_ns.route('/<int:id>')
 @store_ns.doc(security='JPastor')
 class StoresGetUpdateDelete(Resource):
-    @jwt_required()
+    #@jwt_required()
     def get(self, id):
         ''' Obtener la tienda por su id '''
         controller = StoreController()
         return controller.find_by_id(id)
 
-    @jwt_required()
+    #@jwt_required()
     @store_ns.expect(request_schema.update(), validate=True)
     def patch(self, id):
         ''' Actualizar la tienda por su id '''
         controller = StoreController()
         return controller.update(id, request.json)
 
-    @jwt_required()
+    #@jwt_required()
     def delete(self, id):
         ''' Eliminar la tienda por su id '''
         controller = StoreController()

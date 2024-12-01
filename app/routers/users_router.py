@@ -26,7 +26,7 @@ class UsersListCreate(Resource):
         controller = UserController()
         return controller.fetch_all(query_params)
 
-    @jwt_required()
+    #@jwt_required()
     @user_ns.expect(request_schema.create(), validate=True)
     def post(self):
         ''' Creacion de un usuario '''
@@ -37,20 +37,20 @@ class UsersListCreate(Resource):
 @user_ns.route('/<int:id>')
 @user_ns.doc(security='JPastor')
 class UsersGetUpdateDelete(Resource):
-    @jwt_required()
+    #@jwt_required()
     def get(self, id):
         ''' Obtener un usuario por su id '''
         controller = UserController()
         return controller.find_by_id(id)
 
-    @jwt_required()
+    #@jwt_required()
     @user_ns.expect(request_schema.update(), validate=True)
     def patch(self, id):
         ''' Actualizar un usuario por su id '''
         controller = UserController()
         return controller.update(id, request.json)
 
-    @jwt_required()
+    #@jwt_required()
     def delete(self, id):
         ''' Eliminar un usuario por su id '''
         controller = UserController()
