@@ -10,18 +10,18 @@ class PromotionController:
         self.model = PromotionModel
         self.schema = PromotionResponseSchema
 
-    def fetch_all(self, query_params):
+    def fetch_all(self, store_id, query_params):
         try:
             page = query_params['page']
             per_page = query_params['per_page']
 
-            records = self.model.where(status=True).order_by('id').paginate(
+            records = self.model.where(store_id=store_id, status=True).order_by('id').paginate(
                 page=page,
                 per_page=per_page
             )
-            stores = self.schema(many=True)
+            promotion = self.schema(many=True)
             return {
-                'results': stores.dump(records.items),
+                'results': promotion.dump(records.items),
                 'pagination': {
                     'totalRecords': records.total,
                     'totalPages': records.pages,

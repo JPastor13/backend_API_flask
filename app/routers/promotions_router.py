@@ -17,15 +17,7 @@ request_schema = PromotionRequestSchema(promotion_ns)
 
 @promotion_ns.route('')
 @promotion_ns.doc(security='JPastor')
-class PromotionsListCreate(Resource):
-    #@jwt_required()
-    @promotion_ns.expect(request_schema.all())
-    def get(self):
-        ''' Listar todas las promociones '''
-        query_params = request_schema.all().parse_args()
-        controller = PromotionController()
-        return controller.fetch_all(query_params)
-
+class PromotionsCreate(Resource):
     #@jwt_required()
     @promotion_ns.expect(request_schema.create(), validate=True)
     def post(self):
@@ -33,6 +25,17 @@ class PromotionsListCreate(Resource):
         controller = PromotionController()
         return controller.save(request.json)
 
+
+@promotion_ns.route('/<int:store_id>')
+@promotion_ns.doc(security='JPastor')
+class PromotionsList(Resource):
+    #@jwt_required()
+    @promotion_ns.expect(request_schema.all())
+    def get(self, store_id):
+        ''' Listar todas las promociones '''
+        query_params = request_schema.all().parse_args()
+        controller = PromotionController()
+        return controller.fetch_all(store_id, query_params)
 
 @promotion_ns.route('/<int:id>')
 @promotion_ns.doc(security='JPastor')
