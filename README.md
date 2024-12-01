@@ -99,8 +99,11 @@ FLASK_DEBUG=True
 DATABASE_URI= 'postgresql://plazasantander_pgsql_user:qI6U5hggFl9Cp2NjlpdlDgkbJgRJwibI@dpg-ct5qtvt6l47c73fr2v70-a.virginia-postgres.render.com/plazasantander_pgsql'
 SECRET_KEY='pastor'
 ```
+## SWAGGER
+```ssh
+https://plazasantander-api.onrender.com/swagger-ui
 
-
+```
 ## Migraciones
 
 - Iniciar alembic (se ejecuta una sola vez, solo si no existe una carpeta **migrations**)
