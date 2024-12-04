@@ -6,7 +6,7 @@ from flask_mail import Message
 
 class Mailing:
     def __init__(self):
-        self.sender = ('Flask Boilerplate', getenv('MAIL_USERNAME'))
+        self.sender = ('Plaza Santander', getenv('MAIL_USERNAME'))
 
     def mail_reset_password(self, name, recipient, new_password):
         html = render_template('reset_password.html',

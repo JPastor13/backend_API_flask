@@ -16,7 +16,7 @@ request_schema = StoreRequestSchema(store_ns)
 
 
 @store_ns.route('')
-@store_ns.doc(security='JPastor')
+@store_ns.doc(security='Bearer')
 class StoressListCreate(Resource):
     #@jwt_required()
     #@store_ns.expect(request_schema.all())
@@ -31,7 +31,7 @@ class StoressListCreate(Resource):
         controller = StoreController()
         return controller.fetch_all()
 
-    #@jwt_required()
+    @jwt_required()
     @store_ns.expect(request_schema.create(), validate=True)
     def post(self):
         ''' Creacion de una tienda '''
@@ -40,7 +40,7 @@ class StoressListCreate(Resource):
 
 
 @store_ns.route('/<int:id>')
-@store_ns.doc(security='JPastor')
+@store_ns.doc(security='Bearer')
 class StoresGetUpdateDelete(Resource):
     #@jwt_required()
     def get(self, id):
@@ -48,14 +48,14 @@ class StoresGetUpdateDelete(Resource):
         controller = StoreController()
         return controller.find_by_id(id)
 
-    #@jwt_required()
+    @jwt_required()
     @store_ns.expect(request_schema.update(), validate=True)
     def patch(self, id):
         ''' Actualizar la tienda por su id '''
         controller = StoreController()
         return controller.update(id, request.json)
 
-    #@jwt_required()
+    @jwt_required()
     def delete(self, id):
         ''' Eliminar la tienda por su id '''
         controller = StoreController()

@@ -36,7 +36,7 @@ def upload_file():
 if __name__=='__main__':
     app.run(debug=True)
 authorization = {
-    'JPastor': {
+    'Bearer': {
         'type': 'apiKey',
         'in': 'header',
         'name': 'Authorization'

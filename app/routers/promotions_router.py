@@ -16,9 +16,9 @@ request_schema = PromotionRequestSchema(promotion_ns)
 
 
 @promotion_ns.route('')
-@promotion_ns.doc(security='JPastor')
+@promotion_ns.doc(security='Bearer')
 class PromotionsCreate(Resource):
-    #@jwt_required()
+    @jwt_required()
     @promotion_ns.expect(request_schema.create(), validate=True)
     def post(self):
         ''' Creacion de una nueva promoción '''
@@ -27,7 +27,7 @@ class PromotionsCreate(Resource):
 
 
 @promotion_ns.route('/<int:store_id>')
-@promotion_ns.doc(security='JPastor')
+@promotion_ns.doc(security='Bearer')
 class PromotionsList(Resource):
     #@jwt_required()
     @promotion_ns.expect(request_schema.all())
@@ -38,7 +38,7 @@ class PromotionsList(Resource):
         return controller.fetch_all(store_id, query_params)
 
 @promotion_ns.route('/<int:id>')
-@promotion_ns.doc(security='JPastor')
+@promotion_ns.doc(security='Bearer')
 class PromotionsGetUpdateDelete(Resource):
     #@jwt_required()
     def get(self, id):
@@ -46,14 +46,14 @@ class PromotionsGetUpdateDelete(Resource):
         controller = PromotionController()
         return controller.find_by_id(id)
 
-   #@jwt_required()
+    @jwt_required()
     @promotion_ns.expect(request_schema.update(), validate=True)
     def patch(self, id):
         ''' Actualizar la promoción por su id '''
         controller = PromotionController()
         return controller.update(id, request.json)
 
-    #@jwt_required()
+    @jwt_required()
     def delete(self, id):
         ''' Eliminar la promoción por su id '''
         controller = PromotionController()
