@@ -31,7 +31,7 @@ class StoressListCreate(Resource):
         controller = StoreController()
         return controller.fetch_all()
 
-    @jwt_required()
+    #@jwt_required()
     @store_ns.expect(request_schema.create(), validate=True)
     def post(self):
         ''' Creacion de una tienda '''
@@ -48,14 +48,14 @@ class StoresGetUpdateDelete(Resource):
         controller = StoreController()
         return controller.find_by_id(id)
 
-    @jwt_required()
+    #@jwt_required()
     @store_ns.expect(request_schema.update(), validate=True)
     def patch(self, id):
         ''' Actualizar la tienda por su id '''
         controller = StoreController()
         return controller.update(id, request.json)
 
-    @jwt_required()
+    #@jwt_required()
     def delete(self, id):
         ''' Eliminar la tienda por su id '''
         controller = StoreController()

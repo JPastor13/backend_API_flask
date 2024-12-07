@@ -43,14 +43,14 @@ class EventsGetUpdateDelete(Resource):
         controller = EventController()
         return controller.find_by_id(id)
 
-    @jwt_required()
+    #@jwt_required()
     @event_ns.expect(request_schema.update(), validate=True)
     def patch(self, id):
         ''' Actualizar el evento por su id '''
         controller = EventController()
         return controller.update(id, request.json)
 
-    @jwt_required()
+    #@jwt_required()
     def delete(self, id):
         ''' Eliminar el evento por su id '''
         controller = EventController()
