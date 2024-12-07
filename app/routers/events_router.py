@@ -26,7 +26,7 @@ class EventsListCreate(Resource):
         controller = EventController()
         return controller.fetch_all(query_params)
 
-    @jwt_required()
+    #@jwt_required()
     @event_ns.expect(request_schema.create(), validate=True)
     def post(self):
         ''' Creacion de un evento '''
